@@ -2,8 +2,8 @@
 
 // Run code only after the DOM has fully loaded
 document.addEventListener('DOMContentLoaded', function () {
-  // Select DOM Elements
-  const addButton = document.getElementById('add-task');
+  // Select DOM Elements (corrected IDs)
+  const addButton = document.getElementById('add-task-btn'); // corrected to match HTML
   const taskInput = document.getElementById('task-input');
   const taskList = document.getElementById('task-list');
 
@@ -51,10 +51,4 @@ document.addEventListener('DOMContentLoaded', function () {
       addTask();
     }
   });
-
-  // Invoke addTask on DOMContentLoaded (optional initial run)
-  // This ensures the function is available immediately
-  // but doesn’t add a task until user input
-  // If you want to auto-run, uncomment the line below:
-  // addTask();
 });
