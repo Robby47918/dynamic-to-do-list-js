@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const taskInput = document.getElementById('task-input');
   const taskList = document.getElementById('task-list');
 
+ // Load tasks from Local Storage
+function loadTasks() {
+  const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  storedTasks.forEach(taskText => addTask(taskText, false)); 
+  // 'false' prevents saving again while loading
+}
+ 
   // Function to add a new task
   function addTask() {
     // Retrieve and trim input value
@@ -51,4 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
       addTask();
     }
   });
+  // Load tasks when page is ready
+loadTasks();
 });
+
