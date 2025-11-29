@@ -13,7 +13,23 @@ function loadTasks() {
   storedTasks.forEach(taskText => addTask(taskText, false)); 
   // 'false' prevents saving again while loading
 }
- 
+ if (save) {
+  taskInput.value = "";
+
+  // Save to Local Storage
+  const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  storedTasks.push(taskText);
+  localStorage.setItem('tasks', JSON.stringify(storedTasks)); // <-- JSON.stringify added
+}
+removeButton.onclick = function () {
+  taskList.removeChild(li);
+
+  // Update Local Storage after removal
+  let storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  storedTasks = storedTasks.filter(task => task !== taskText);
+  localStorage.setItem('tasks', JSON.stringify(storedTasks)); // <-- JSON.stringify added
+};
+
   // Function to add a new task
   function addTask() {
     // Retrieve and trim input value
@@ -61,4 +77,5 @@ function loadTasks() {
   // Load tasks when page is ready
 loadTasks();
 });
+
 
